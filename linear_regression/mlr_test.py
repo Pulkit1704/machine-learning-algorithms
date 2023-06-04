@@ -36,6 +36,3 @@ ax.scatter(test_x[:, 0], test_x[:, -1], predictions, color= 'red')
 
 
 plt.show() 
-
-
-# %%
