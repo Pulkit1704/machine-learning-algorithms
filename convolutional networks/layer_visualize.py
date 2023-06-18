@@ -1,14 +1,14 @@
 import matplotlib.pyplot as plt 
 
 from cnn_model import Model 
-from train import load_data 
+from data_utils import load_mnist 
 import torch 
 import torchvision 
 
 
 transformation = torchvision.transforms.Compose([torchvision.transforms.ToTensor()])
 
-_, testloader = load_data(root_dir= "./data", batch_size = 1, transformation= transformation) 
+_, testloader = load_mnist(root= "./data", batch_size = 1, transformation= transformation) 
 
 data = next(iter(testloader)) 
 
@@ -17,7 +17,7 @@ inputs, labels = data
 sample_image = inputs[0] 
 model = Model(num_channels=10, kernel_size=3, pool_size=2)  
 
-model.load_state_dict(torch.load("./trained_models/channel_variation/trained_model_10/mnist_sequential.pth"))
+model.load_state_dict(torch.load("./trained_model/mnist_trained.pth"))
 
 
 def filter_show(layer_output, axes_arr): 
